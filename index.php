@@ -1,34 +1,24 @@
 <?php
 
-$timesToRunExperiment = 100000000;
+$timesToRunExperiment = 1000000000;
 
-// 2 (24.9447%, 25.1414%)
 $expected = array(
-	0, 1
-);
-
-// 4 (6.2209%, 6.289%)
-$expected = array(
-	0, 1, 0, 1
-);
-
-// 6 (1.5296%, 1.5838%)
-$expected = array(
-	0, 1, 0, 1, 0, 1
-);
-
-// 8 (0.3786%, 0.3966%)
-$expected = array(
-	0, 1, 0, 1, 0, 1, 0, 1
-);
-
-// 10 (0.0925%, 0.1019%)
-$expected = array(
-	0, 1, 0, 1, 0, 1, 0, 1, 0, 1
-);
-
-// 20 (8.4E-5%)
-$expected = array(
+	// 2 (24.9447%, 25.1414%)
+	// 0, 1		
+	
+	// 4 (6.2209%, 6.289%)
+	// 0, 1, 0, 1
+	
+	// 6 (1.5296%, 1.5838%)
+	// 0, 1, 0, 1, 0, 1
+	
+	// 8 (0.3786%, 0.3966%)
+	// 0, 1, 0, 1, 0, 1, 0, 1
+	
+	// 10 (0.0925%, 0.1019%)
+	// 0, 1, 0, 1, 0, 1, 0, 1, 0, 1
+	
+	// 20 (9.08E-5%, 9.88E-5%)
 	0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1
 );
 
@@ -49,6 +39,11 @@ for($experimentCounter = 0; $experimentCounter < $timesToRunExperiment; $experim
 	if($expected == $outcomes)
 	{
 		$numberOfTimesMatchedExpectedOutcome++;
+	}
+	
+	if($experimentCounter % 1000000 == 0)
+	{
+		echo 'Progress: ' . number_format($experimentCounter / $timesToRunExperiment * 100, 1) . '%' . PHP_EOL;
 	}
 }
 
